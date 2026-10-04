@@ -1,0 +1,395 @@
+      /* --- Minimalist 80% Black with 20% Violet Accents (Frosted Glass) --- */
+      body {
+        background-color: #070709;
+        color: #f4f4f5;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* Subtle Violet Ambient Glow for Frosted Glass Refraction */
+      body::before {
+        content: '';
+        position: fixed;
+        top: -10%;
+        left: 20%;
+        width: 550px;
+        height: 550px;
+        background: radial-gradient(circle, rgba(168, 85, 247, 0.07) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      body::after {
+        content: '';
+        position: fixed;
+        bottom: -15%;
+        right: 15%;
+        width: 650px;
+        height: 650px;
+        background: radial-gradient(circle, rgba(147, 51, 234, 0.055) 0%, transparent 75%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      #app {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* --- Frosted Glass Aesthetic for All Tiles --- */
+      /* Main Panels & Card Tiles */
+      .bg-\[\#18181b\],
+      .bg-\[\#1e1e24\],
+      .bg-\[\#111117\],
+      .bg-\[\#0c0c12\],
+      .bg-\[\#101016\],
+      .bg-\[\#18181b\]\/80 {
+        background: rgba(18, 18, 24, 0.72) !important;
+        backdrop-filter: blur(16px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+        border-color: rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.06) !important;
+      }
+
+      /* Secondary Wells, Inputs & Inner Tiles */
+      #working-days-container label,
+      #audit-checklist > div,
+      #main-nav-tabs,
+      #view-mode-tabs,
+      #view-mode-tabs-fullscreen,
+      .bg-\[\#09090b\] {
+        background: rgba(9, 9, 13, 0.62) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border-color: rgba(255, 255, 255, 0.07) !important;
+      }
+
+      /* Custom Scrollbars */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(9, 9, 11, 0.5);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(39, 39, 42, 0.7);
+        border-radius: 9999px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(63, 63, 70, 0.9);
+      }
+
+      /* --- Timetable Matrix Grid (Frosted Glass Table) --- */
+      #timetable-matrix-wrapper table,
+      #full-timetable-matrix-wrapper table {
+        background: rgba(8, 8, 12, 0.65) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        border-collapse: collapse !important;
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.05) !important;
+      }
+
+      #timetable-matrix-wrapper thead,
+      #full-timetable-matrix-wrapper thead {
+        background: rgba(16, 16, 22, 0.8) !important;
+        backdrop-filter: blur(14px) !important;
+        -webkit-backdrop-filter: blur(14px) !important;
+      }
+
+      #timetable-matrix-wrapper th,
+      #full-timetable-matrix-wrapper th {
+        border-color: rgba(255, 255, 255, 0.08) !important;
+        color: #d4d4d8 !important;
+      }
+
+      #timetable-matrix-wrapper td,
+      #full-timetable-matrix-wrapper td {
+        border-color: rgba(255, 255, 255, 0.06) !important;
+      }
+
+      #timetable-matrix-wrapper td:hover,
+      #full-timetable-matrix-wrapper td:hover {
+        background: rgba(168, 85, 247, 0.05) !important;
+      }
+
+      /* High-Visibility Frosted Lecture Card */
+      .timetable-lecture-card {
+        backdrop-filter: blur(12px) saturate(160%) !important;
+        -webkit-backdrop-filter: blur(12px) saturate(160%) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25), inset 0 1px 0 0 rgba(255, 255, 255, 0.06) !important;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+      }
+
+      .timetable-lecture-card:hover {
+        transform: translateY(-1.5px);
+        border-color: #a855f7 !important;
+        box-shadow: 0 6px 20px -2px rgba(168, 85, 247, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
+      }
+
+      /* Guaranteed Visible Empty / Free Slot Box (Frosted Glass) */
+      .timetable-free-box {
+        background: rgba(9, 9, 13, 0.45) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1.5px dashed rgba(255, 255, 255, 0.1) !important;
+        transition: border-color 0.15s ease, background 0.15s ease;
+      }
+
+      .timetable-free-box:hover {
+        border-color: #a855f7 !important;
+        background: rgba(168, 85, 247, 0.05) !important;
+      }
+
+      /* Status Banner */
+      #status-banner:not(.hidden) {
+        animation: slideFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      @keyframes slideFadeIn {
+        0% { opacity: 0; transform: translateY(-6px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+
+      @media print {
+        body { background: white !important; color: black !important; }
+        body::before, body::after { display: none !important; }
+        .no-print { display: none !important; }
+        .print-matrix { width: 100% !important; border-collapse: collapse !important; }
+        .print-matrix th, .print-matrix td { border: 1px solid #ccc !important; color: black !important; }
+      }
+    
+
+      /* Charcoal surfaces keep the schedule quiet; green marks active choices. */
+      :root {
+        color-scheme: dark;
+        --page: #0b0e0c;
+        --surface: #121714;
+        --surface-soft: #181f1a;
+        --ink: #e7eee8;
+        --muted: #9ba89e;
+        --line: #29342d;
+        --accent: #8cc7a1;
+        --accent-soft: #18271d;
+        --accent-line: #365541;
+      }
+
+      .theme-light {
+        color-scheme: light;
+        --page: #f4f6f3;
+        --surface: #ffffff;
+        --surface-soft: #f7f9f7;
+        --ink: #1d2923;
+        --muted: #68766e;
+        --line: #dfe6e0;
+        --accent: #27654b;
+        --accent-soft: #eaf3ed;
+        --accent-line: #c8ddcf;
+      }
+
+      html { background: var(--page); }
+      body {
+        background: var(--page) !important;
+        color: var(--ink) !important;
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+        line-height: 1.5;
+      }
+      body::before, body::after { display: none; }
+      #app { min-height: 100vh; }
+      header {
+        background: var(--surface) !important;
+        border-color: var(--line) !important;
+        box-shadow: 0 1px 2px rgba(24,39,30,.04);
+        backdrop-filter: none !important;
+      }
+      header > div { max-width: 1480px; min-height: 68px; height: auto !important; gap: 20px; }
+      header > div > div:first-child { min-width: 0; }
+      header .bg-purple-500\/10 { background: var(--accent-soft) !important; }
+      main { max-width: 1480px !important; gap: 20px !important; }
+      #page-workspace { align-content: start; }
+      .workspace-intro { grid-column: 1 / -1; padding: 9px 2px 3px; }
+      .workspace-intro p { margin: 0; color: var(--muted); font-size: 14px; }
+      .workspace-intro h1 { margin: 0 0 5px; color: var(--ink); font-size: clamp(25px, 3vw, 32px); line-height: 1.2; letter-spacing: -.035em; font-weight: 650; }
+      #page-workspace > section { gap: 16px !important; }
+      #page-workspace [class*="bg-[#18181b]"],
+      #page-workspace [class*="bg-[#1e1e24]"],
+      #page-workspace [class*="bg-[#111117]"],
+      #page-workspace [class*="bg-[#0c0c12]"],
+      #page-workspace [class*="bg-[#101016]"],
+      #page-workspace [class*="bg-[#09090b]"],
+      #page-timetable-view [class*="bg-[#18181b]"],
+      #page-timetable-view [class*="bg-[#09090b]"] {
+        background-color: var(--surface) !important;
+        border-color: var(--line) !important;
+        box-shadow: 0 1px 3px rgba(24,39,30,.045) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+      #page-workspace [class*="bg-[#09090b]"], #page-timetable-view [class*="bg-[#09090b]"] { background-color: var(--surface-soft) !important; }
+      [class*="text-zinc-100"], [class*="text-zinc-200"] { color: var(--ink) !important; }
+      [class*="text-zinc-300"], [class*="text-zinc-400"], [class*="text-zinc-500"] { color: var(--muted) !important; }
+      [class*="text-purple-"] { color: var(--accent) !important; }
+      [class*="border-[#27272a]"], [class*="border-[#242432]"], [class*="border-[#282836]"], [class*="border-[#292938]"], [class*="border-[#2f2f38]"] { border-color: var(--line) !important; }
+      [class*="bg-[#18181b]"], [class*="bg-[#1e1e24]"], [class*="bg-[#111117]"], [class*="bg-[#0c0c12]"], [class*="bg-[#101016]"] { background-color: var(--surface) !important; border-color: var(--line) !important; }
+      [class*="bg-[#09090b]"], [class*="bg-[#27272a]"] { background-color: var(--surface-soft) !important; }
+      [class*="bg-purple-"] { background-color: var(--accent-soft) !important; }
+      [class*="bg-[#27272a]"], [class*="bg-[#1e1e24]"], [class*="bg-[#101016]"] { background-color: var(--surface-soft) !important; }
+      [class*="border-purple-"] { border-color: var(--accent-line) !important; }
+      button {
+        font-family: inherit !important;
+        transition: background-color .15s ease, border-color .15s ease, color .15s ease, box-shadow .15s ease;
+      }
+      button:hover { color: var(--accent) !important; background-color: var(--surface-soft) !important; }
+      button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+        outline: 3px solid rgba(39,101,75,.22) !important;
+        outline-offset: 2px;
+      }
+      input, select, textarea { color: var(--ink) !important; border-color: var(--line) !important; }
+      input::placeholder, textarea::placeholder { color: var(--muted) !important; }
+      #main-nav-tabs, #view-mode-tabs, #view-mode-tabs-fullscreen { border-radius: 9px; }
+      #working-days-container label {
+        border-radius: 8px;
+        background: var(--surface-soft) !important;
+        border-color: var(--line) !important;
+        transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+      }
+      #working-days-container label:has(input:checked) {
+        background: var(--accent-soft) !important;
+        border-color: var(--accent-line) !important;
+      }
+      #working-days-container input:checked + span { color: var(--accent) !important; }
+      #working-days-container input:checked + span + span { background: var(--accent) !important; }
+      #working-days-container label:has(input:focus-visible) { outline: 3px solid rgba(39,101,75,.25); outline-offset: 2px; }
+      #timetable-matrix-wrapper table, #full-timetable-matrix-wrapper table {
+        background: var(--surface) !important;
+        border: 1px solid var(--line) !important;
+        border-radius: 10px;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+      }
+      #timetable-matrix-wrapper th, #full-timetable-matrix-wrapper th { background: var(--surface-soft) !important; color: var(--muted) !important; }
+      #timetable-matrix-wrapper td, #timetable-matrix-wrapper th,
+      #full-timetable-matrix-wrapper td, #full-timetable-matrix-wrapper th { border-color: var(--line) !important; }
+      .timetable-lecture-card { background: var(--accent-soft) !important; border-color: var(--accent-line) !important; box-shadow: none !important; backdrop-filter: none !important; }
+      .timetable-lecture-card { cursor: pointer; transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease, background-color .16s ease !important; }
+      .timetable-lecture-card:hover, .timetable-lecture-card:focus-visible { transform: translateY(-2px); border-color: var(--accent) !important; box-shadow: 0 8px 22px rgba(0,0,0,.24) !important; }
+      .timetable-lecture-card:focus-visible { outline: 2px solid var(--accent) !important; outline-offset: 2px; }
+      .timetable-lecture-card.is-highlighted { box-shadow: 0 0 0 2px var(--accent), 0 8px 22px rgba(0,0,0,.24) !important; }
+      .timetable-free-box { background: var(--surface-soft) !important; border-color: var(--line) !important; backdrop-filter: none !important; }
+      .timetable-free-box:hover { background: var(--surface) !important; border-color: var(--accent-line) !important; }
+      footer { background: transparent !important; border-color: var(--line) !important; color: var(--muted) !important; font-family: inherit !important; }
+      ::-webkit-scrollbar-track { background: var(--page); }
+      ::-webkit-scrollbar-thumb { background: var(--line); }
+      ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+      @media (max-width: 700px) {
+        header > div { padding-top: 10px; padding-bottom: 10px; flex-wrap: wrap; }
+        header > div > div:first-child { flex-wrap: wrap; }
+        #page-workspace { padding: 18px 14px !important; }
+        .workspace-intro { padding-top: 2px; }
+      }
+      .course-dialog {
+        width: min(460px, calc(100vw - 32px));
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 0;
+        color: var(--ink);
+        background: var(--surface);
+        box-shadow: 0 24px 80px rgba(0,0,0,.45);
+      }
+      .course-dialog::backdrop { background: rgba(0,0,0,.62); backdrop-filter: blur(3px); }
+      .course-dialog[open] { animation: dialog-in .18s ease-out; }
+      @keyframes dialog-in { from { opacity: 0; transform: translateY(8px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+      .course-dialog-content { padding: 24px; }
+      .course-detail-row { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+      .course-detail-row:last-child { border-bottom: 0; }
+      .course-detail-row span:first-child { color: var(--muted); }
+      .course-detail-row span:last-child { color: var(--ink); text-align: right; font-weight: 550; }
+      @media screen {
+        body {
+          background:
+            radial-gradient(ellipse at 12% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 34%),
+            radial-gradient(ellipse at 92% 18%, rgba(121, 145, 128, .08), transparent 30%),
+            var(--page) !important;
+        }
+        body::before, body::after {
+          content: "";
+          display: block;
+          position: fixed;
+          z-index: 0;
+          pointer-events: none;
+          width: 420px;
+          height: 420px;
+          border-radius: 50%;
+          filter: blur(60px);
+          opacity: .12;
+        }
+        body::before { top: -260px; left: 25%; background: var(--accent); }
+        body::after { right: -300px; bottom: -230px; background: #72957a; }
+        header {
+          background: color-mix(in srgb, var(--surface) 78%, transparent) !important;
+          border-color: color-mix(in srgb, var(--line) 72%, transparent) !important;
+          box-shadow: 0 8px 30px rgba(0,0,0,.12), inset 0 -1px rgba(255,255,255,.035);
+          backdrop-filter: blur(22px) saturate(150%) !important;
+          -webkit-backdrop-filter: blur(22px) saturate(150%) !important;
+        }
+        #page-workspace > section > div[class*="bg-[#18181b]"],
+        #page-workspace > section > div[class*="bg-[#09090b]"],
+        #page-timetable-view > div[class*="bg-[#18181b]"] {
+          background: linear-gradient(145deg,
+            color-mix(in srgb, var(--surface) 94%, white 6%),
+            color-mix(in srgb, var(--surface) 82%, transparent)) !important;
+          border-color: color-mix(in srgb, var(--line) 74%, white 9%) !important;
+          box-shadow: 0 16px 38px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.055) !important;
+          backdrop-filter: blur(18px) saturate(140%) !important;
+          -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+        }
+        #main-nav-tabs, #view-mode-tabs, #view-mode-tabs-fullscreen,
+        #working-days-container label, input, select, textarea {
+          backdrop-filter: blur(12px) saturate(135%);
+          -webkit-backdrop-filter: blur(12px) saturate(135%);
+        }
+        #working-days-container label { background: color-mix(in srgb, var(--surface-soft) 78%, transparent) !important; }
+        #working-days-container label:has(input:checked) {
+          background: linear-gradient(135deg,
+            color-mix(in srgb, var(--accent-soft) 94%, white 6%),
+            color-mix(in srgb, var(--accent-soft) 80%, transparent)) !important;
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 4px 14px rgba(0,0,0,.12);
+        }
+        .timetable-lecture-card {
+          background: linear-gradient(145deg,
+            color-mix(in srgb, var(--accent-soft) 92%, white 8%),
+            color-mix(in srgb, var(--accent-soft) 78%, transparent)) !important;
+          border-top-color: rgba(255,255,255,.18) !important;
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.075), 0 5px 14px rgba(0,0,0,.12) !important;
+          backdrop-filter: blur(14px) saturate(145%) !important;
+          -webkit-backdrop-filter: blur(14px) saturate(145%) !important;
+        }
+        .timetable-free-box {
+          background: color-mix(in srgb, var(--surface-soft) 68%, transparent) !important;
+          backdrop-filter: blur(10px) !important;
+          -webkit-backdrop-filter: blur(10px) !important;
+        }
+        .course-dialog {
+          background: color-mix(in srgb, var(--surface) 84%, transparent);
+          border-color: color-mix(in srgb, var(--line) 70%, white 12%);
+          backdrop-filter: blur(24px) saturate(150%);
+          -webkit-backdrop-filter: blur(24px) saturate(150%);
+        }
+        button { box-shadow: inset 0 1px 0 rgba(255,255,255,.035); }
+        button:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 5px 16px rgba(0,0,0,.14); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      }
+      @media print {
+        :root, :root.theme-light {
+          --page: #fff; --surface: #fff; --surface-soft: #f7f9f7; --ink: #111;
+          --muted: #555; --line: #ddd; --accent: #27654b; --accent-soft: #edf4ef; --accent-line: #c9ddcf;
+        }
+        body { background: #fff !important; color: #111 !important; }
+        .timetable-lecture-card { background: #edf4ef !important; }
+      }
+    
